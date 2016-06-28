@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <script src="js/lib/jquery-1.12.1.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/d3.js"></script>
+    <script src="js/lib/d3.tip.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+    <script src="js/angular/bookKeeping.js"></script>
+    <script src="js/angular/titleCtrl.js"></script>
+    <script src="js/angular/navCtrl.js"></script>
+    <script src="js/angular/tablesCtrl.js"></script>
+    <script src="js/angular/chartsCtrl.js"></script>
+
+    <script src="js/angular/d3basics.js"></script>
+    <script src="js/angular/demoCtrl.js"></script>
+
+    
+    <script src="js/data/w0y16.js"></script>
+    <script src="js/data/w1y16.js"></script>
+    <script src="js/data/w2y16.js"></script>
+    <script src="js/data/w3y16.js"></script>
+    <script src="js/data/w4y16.js"></script>
+    <script src="js/data/w5y16.js"></script>
+    <script src="js/helper.js"></script>
+</head>
+
+<body ng-app="bookKeepingApp">
+    <!-- Navbar -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Menu
+                    </a>
+                </li>
+                <li>
+                    <a href="#/tables">Tables</a>
+                </li>
+                <li>
+                    <a href="#/charts">Charts</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <h2 ng-controller="titleCtrl" id="menu-toggle">Bookkeeper Demo {{title}}</h2>
+            <div ng-controller="navCtrl">
+                <!-- Select Week -->
+                <div class="btn-group" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Week
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="i in getNumber(number) track by $index"><a ng-click="printMe()">WW {{$index}}</a>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Select Month -->
+                <div class="btn-group" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Month
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="i in months track by $index"><a ng-click="monthlyCal()">{{i}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ng-view></ng-view>
+        </div>
+    </div>
+</body>
+
+<!--
+<script>
+$("#wrapper").toggleClass("toggled");
+</script>
+-->
+</html>

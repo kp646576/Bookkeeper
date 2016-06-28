@@ -1,0 +1,130 @@
+<div class="panel panel-primary">
+    <!-- Expenditures -->
+    <div class="panel-heading">Expenditures</div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Company</th>
+                <th>Payment</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="i in expenditures">
+                <td>{{i.date}}</td>
+                <td>{{i.company}}</td>
+                <td>{{i.payment}}</td>
+                <td>${{i.amount}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Sales -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">Sales</div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Lottery</th>
+                    <th>Sales</th>
+                    <th>Adjusted Sales</th>
+                    <th>Credit Card</th>
+                    <th>Food Stamps</th>
+                    <th>ATM</th>
+                    <th>Total Card</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in sales">
+                    <td>{{i.date}}</td>
+                    <td>${{i.lottery}}</td>
+                    <td>${{i.sales}}</td>
+                    <td>${{i.adjustedSales}}</td>
+                    <td>${{i.creditCard}}</td>
+                    <td>${{i.foodStamps}}</td>
+                    <td>${{i.atm}}</td>
+                    <td>${{getTotal(i.creditCard, i.foodStamps, i.atm)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Utilities -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">Utilities</div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in utilities">
+                    <td>{{i.company}}</td>
+                    <td>${{i.amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Other Expenses -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">Other Expenses</div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Misc Expenses</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in other">
+                    <td>{{i.type}}</td>
+                    <td>${{i.amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Totals -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">Totals</div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Total</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Utilities</td>
+                    <td>${{totalUtilities}}</td>
+                </tr>
+                <tr>
+                    <td>Other Expenses</td>
+                    <td>${{totalOExpenses}}</td>
+                </tr>
+                <tr>
+                    <td>Expenses (Utilities + Other Expenses)</td>
+                    <td>${{totalExpenses}}</td>
+                </tr>
+                <tr>
+                    <td>Sales</td>
+                    <td>${{totalSales}}</td>
+                </tr>
+                <tr>
+                    <td>Expenditures</td>
+                    <td>${{totalExpenditures}}</td>
+                </tr>
+                <tr>
+                    <td>Profit</td>
+                    <td>${{totalProfit}}</td>
+                </tr>
+                <tr>
+                    <td>Profit Percentage</td>
+                    <td>{{totalProfitPercentage}}%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
